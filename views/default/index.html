@@ -1,0 +1,42 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+{{if not auth.user_id:}}
+{{response.flash = T("Usuario sin autorización")}}
+{{=H3("Validación de Usuarios")}}
+{{=retorno}}
+{{else:}}
+{{response.flash = T("Usuario autorizado")}}
+<!-- Tabs
+================================================== -->
+
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active"><a href="#home" data-toggle="tab">Obejtivo General</a></li>
+      <li><a href="#profile" data-toggle="tab">Objetivos Específicos</a></li>      
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="home">
+        <p>Implementar un Sistema web para escribir, evaluar y almacenar los informes de guardia del personal rotativo de la Gerencia de Soporte e Infraestructura.</p>
+      </div>
+      <div class="tab-pane fade" id="profile">
+        <p>•	Identificar los informes de guardia para cada turno rotativo.
+•	Analizar la estructura de los informes de guardia actuales y definir como se debe estructurar el nuevo informe de guardia.
+•	Diseñar un flujo de trabajo (WORKFLOW) que permita mantener la cadena evaluativa actual.
+•	Diseñar aplicación web para el manejo de los informes de guardia.
+•	Evaluar y diseñar facilidades adicionales.
+•	Poner en marcha versión beta de la aplicación web para el manejo de informes de guardia. 
+•	Evaluar y diseñar facilidades adicionales en la versión beta.
+•	Pruebas de las certificaciones digitales.
+•	Hacer el pase a producción de la versión final del sistema.
+.</p>
+      </div>
+<!-- /example -->
+<b>Tipo de usuario conectado: <b>{{=tipo}}
+<script>
+  $('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+    })
+</script>
+{{pass}}

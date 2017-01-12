@@ -1,0 +1,66 @@
+{{extend 'layout.html'}}
+{{import funciones}}
+<!-- Tab Headers-->
+    {{tu=funciones.tipo_usuario(funciones.id_usuario_actual())}}
+    {{if tu=='Administrador':}}
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active"><a href="#ingresar" data-toggle="tab">Administración de checklist</a></li>
+        
+      <li><a href="#consultar" data-toggle="tab">Checklist Actual</a></li>
+    </ul>
+    <!--Tab Contents-->
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="ingresar">
+        {{=form_checklist}}
+      </div>
+      <div class="tab-pane fade" id="consultar">
+        {{=H4("Turno: Mañana")}}
+        {{=cl_manana}}
+        {{=H4("Turno: Tarde")}}
+        {{=cl_tarde}}
+        {{=H4("Turno: Noche")}}
+        {{=cl_noche}}
+      </div>
+    </div>
+        {{else:}}
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active"><a href="#consultar" data-toggle="tab">Checklist Actual</a></li>
+    </ul>
+    <!--Tab Contents-->
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="consultar">
+        {{=H4("Turno: Mañana")}}
+        {{=cl_manana}}
+        {{=H4("Turno: Tarde")}}
+        {{=cl_tarde}}
+        {{=H4("Turno: Noche")}}
+        {{=cl_noche}}
+      </div>
+    </div>
+    {{pass}}
+        {{=H3("Reportes de Checklist")}}
+        <div class="btn-group">
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Turno: Mañana <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                <li>{{=A("Ver reporte",_href=URL('reportes','pdf_checklist',vars = dict(t=1)),_target='blank')}}</li>
+            </ul>
+        </div>
+        <div class="btn-group">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Turno: Tarde <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                <li>{{=A("Ver reporte",_href=URL('reportes','pdf_checklist',vars = dict(t=2)),_target='blank')}}</li>
+            </ul>
+        </div>
+        <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Turno: Noche <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                <li>{{=A("Ver reporte",_href=URL('reportes','pdf_checklist',vars = dict(t=3)),_target='blank')}}</li>
+            </ul>
+        </div>
+
+<script>
+  $('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+    })
+</script>

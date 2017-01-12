@@ -1,0 +1,26 @@
+{{extend 'layout.html'}}
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery('#no_table_detalle').css('width','800px');
+        jQuery('textarea').css('height','400px');
+    });
+</script>
+
+{{=titulo}}
+{{=div_detalle}}
+{{=enlace}}
+<ul class="nav nav-pills">
+    <li>{{=detalle}}</li>
+    {{=link_reporte}}
+</ul>
+{{=enlace}}
+{{if evento:}}
+<h4>Eventos de la actividad</h4>
+{{=evento}}
+{{pass}}
+<script type="text/javascript">
+    $(".disabled").click(function(event) {
+        event.preventDefault();
+    });
+    $("#no_table_correos_notificacion").attr('disabled', 'disabled');
+</script>

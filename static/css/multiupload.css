@@ -1,0 +1,241 @@
+/* CAUTION: essential rules don't remove */
+div.multiupload_widget 
+{
+	display:inline-block; /* fix the div.error issue */
+}
+
+ul.mw_list
+{
+	display:block;
+}
+
+input.mw_fileTitle
+{
+	float:left;
+}
+
+div.mw_fileBrowserWrapper
+{
+	float:left;
+}
+
+a.mw_addBtn
+{
+	display:block;
+	position:relative;
+	overflow:hidden;
+	max-width:70px;
+	min-height:22px;
+	text-align:center;
+	margin-right:2px;
+}
+
+a.mw_clearBtn
+{
+	float:left;
+	max-width:70px;
+	min-height:22px;
+	text-align:center;
+	margin-left:2px;
+}
+
+a.mw_delItem
+{
+	display:block;
+	float:right;
+}
+
+ul.mw_list ul
+{
+	width:90%; /* to avoid elastic when we slide it */
+}
+li.mw_group
+{
+	cursor:pointer;
+}
+
+/* CUSTOMIZATION */
+
+div.multiupload_widget
+{
+width:280px;
+margin: 2px 15px 2px 5px;
+padding:0 1px;
+}
+
+ul.mw_list
+{
+margin:0 0 4px 0;
+padding:0;
+min-height:32px;
+border:1px solid #e1e1e1;
+border-radius:2px;
+overflow:auto;
+list-style:none;
+}
+
+ul.mw_list>li
+{
+font-weight:bold;
+display:block;
+margin:2px 0;
+}
+
+ul.mw_list li:hover
+{
+background-color:lightyellow;
+}
+
+ul.mw_list ul
+{
+list-style:none;
+margin-top:2px;
+margin-left:22px;
+width:256px; /*div.multiupload_widget - (margin-left + 2*(border width)) => 280-(22+2) */
+}
+
+ul.mw_list ul li
+{
+font-weight:normal;
+}
+
+ul.mw_list span
+{
+word-wrap:break-word;
+display:inline-block;
+width:80%;
+margin:0 0 0 10px;
+}
+
+li.mw_group
+{
+
+}
+
+li.mw_group span
+{
+
+}
+
+div.mw_bar{}
+
+input[type="text"].mw_fileTitle
+{
+width:69%;
+padding-left:3px;
+}
+
+div.mw_fileBrowserWrapper{}
+
+a.mw_addBtn, a.mw_clearBtn
+{
+width:24px;
+height:22px;
+background:#EAEAEA;
+border:1px solid #DEDEDE;
+border-radius:2px;
+margin:0 2px 0 2px;
+font-size:16px;
+font-weight:bold;
+line-height:22px;
+}
+
+a.mw_addBtn
+{
+line-height:24px;
+}
+
+a.mw_addBtn:hover, a.mw_clearBtn:hover
+{
+text-decoration:none;
+}
+
+a.mw_addBtn > span {}
+a.mw_clearBtn > span {}
+
+a.mw_delItem
+{
+width:16px;
+height:16px;
+background-color:silver;
+color:white;
+font-weight:bold;
+border-radius:10px;
+text-align:center;
+font-size:13px;
+line-height:13px;
+text-decoration:none;
+margin:2px 4px 0 0;
+}
+
+a.mw_delItem:hover
+{
+text-decoration:none;
+color:#275B90;
+background-color:#aaa;
+}
+
+/*----------------------------------------------------------------------------------*/
+/* FILE ICON - based on http://nicolasgallagher.com/pure-css-gui-icons/
+/*----------------------------------------------------------------------------------*/
+
+ul.mw_list i
+{
+display: block;
+float: left;
+width: 12px;
+height: 17px;
+background: #eee;
+margin-left: 4px;
+margin-top: 2px;
+position: relative;
+}
+
+ul.mw_list b
+{
+	z-index:1;
+	overflow:hidden;
+	padding:0;
+}
+
+ul.mw_list b em
+{
+	border-bottom: 1px solid #275B90;
+	color: #275B90;
+	display: block;
+}
+
+ul.mw_list b em::before, ul.mw_list b em::after
+{
+margin: -8px 0 0;
+background: #275B90;
+}
+
+ul.mw_list b em::before
+{
+left: 5px;
+width: 8px;
+height: 12px;
+border: 2px solid #275B90;
+background: transparent;
+}
+
+ul.mw_list b em::after
+{
+left: 4px;
+border-width: 3px;
+border-style: solid;
+border-color: white #275B90 #275B90 white;
+margin-top: -9px;
+background: transparent;
+}
+
+ul.mw_list b::before, ul.mw_list b::after, ul.mw_list b em::before, ul.mw_list b em::after 
+{
+	content:"";
+	position:absolute;
+	top:50%;
+	left:0;
+}
+
+/*----------------------------------------------------------------------------------*/

@@ -1,0 +1,60 @@
+{{extend 'layout.html'}}
+{{import funciones}}
+    <!-- Tab Headers-->
+{{if funciones.tipo_usuario(funciones.id_usuario_actual())=='Administrador':}}
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active"><a href="#ingresar" data-toggle="tab">Ingresar Actividades</a></li>
+      <li><a href="#consultar" data-toggle="tab">Actividades Almacenadas</a></li>
+    </ul>
+    <!--Tab Contents-->
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="ingresar">
+        {{=actividades}}
+          <div>
+            Caracteres restantes para la descripción de la actividad:
+        </div>
+        <div id="chars">80</div>
+      </div>
+      <div class="tab-pane fade" id="consultar">
+        {{=actividades_actuales}}
+      </div>
+{{else:}}
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active"><a href="#consultar" data-toggle="tab">Actividades Almacenadas</a></li>
+    </ul>
+    <!--Tab Contents-->
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="consultar">
+        {{=actividades_actuales}}
+      </div>
+{{pass}}
+<script>
+(function($) {
+	$.fn.extend( {
+		limiter: function(limit, elem) {
+			$(this).on("keyup focus", function() {
+				setCount(this, elem);
+			});
+			function setCount(src, elem) {
+				var chars = src.value.length;
+				if (chars > limit) {
+					src.value = src.value.substr(0, limit);
+					chars = limit;
+				}
+				elem.html( limit - chars );
+			}
+			setCount($(this)[0], elem);
+		}
+	});
+})(jQuery);
+    
+$(document).ready( function() {
+    var elem = $("#chars");
+    $("#no_table_desc_act").limiter(80, elem);
+});
+    
+  $('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+    })
+</script>

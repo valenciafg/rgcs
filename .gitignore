@@ -1,0 +1,15 @@
+*.pyc
+cache/
+databases/*
+errors/
+sessions/
+private/
+uploads/*
+.hg/
+models/db.py
+static/archivos/*
+static/certificaciones/*
+static/checklist/*
+static/formatos/*
+static/guardias/*
+static/plugin_ckeditor/*

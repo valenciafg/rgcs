@@ -1,0 +1,35 @@
+{{extend 'layout.html'}}
+{{=H3("Datos de guardia")}}
+{{=datos_guardia}}
+{{if enlace_cambiar_estado:
+    =H3("Cambiar Estado de Guardia")
+    =enlace_cambiar_estado
+pass}}
+{{if enlace_eliminar:
+    =H3("Eliminar Guardia")
+    =enlace_eliminar
+pass}}
+{{=H3("Actividades a realizar")}}
+{{=cat}}
+{{if festatus!=None:}}
+{{=H3("Finalizar guardia")}}
+{{=festatus}}
+{{pass}}
+{{=H3("Observaciones")}}
+{{=observaciones}}
+{{=H3("Observaciones de Revisión")}}
+{{=observaciones_rev}}
+{{if resp_observacion!=None:}}
+{{=H3("Respuesta de Observaciones de Revisión")}}
+{{=resp_observacion}}
+{{pass}}
+{{=H3("Estado de Enlaces y Equipos Caídos")}}
+{{=enlaces}}
+{{if reporte:}}
+{{=H3("Reporte")}}
+{{=reporte}}
+{{pass}}
+{{if logs!='':}}
+{{=H3("Historial de eventos")}}
+{{=logs}}
+{{pass}}

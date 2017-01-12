@@ -1,0 +1,47 @@
+{{response.files.extend([URL('static','css/multiupload.css'),
+                        URL('static','js/jquery.multiupload.js')])}}
+{{left_sidebar_enabled=right_sidebar_enabled=False}}
+{{extend 'layout.html'}}
+<div>
+{{=titulo}}
+    {{=enlace}}
+    {{if reemplazar==1:}}
+    <h3>
+        Archivos a sustituir
+    </h3>
+    {{=archivos_reem}}
+    <h3>
+        Formulario de inclusión
+    </h3>
+    {{pass}}
+<ul class="nav nav-pills">
+    <li>{{=form}}</li>
+    {{=link_reporte}}
+</ul>
+{{=enlace}}
+{{if evento:}}
+<h4>Eventos de la actividad</h4>
+{{=evento}}
+{{pass}}
+<script type="text/javascript" charset="utf-8">
+//<!--
+jQuery('input[name="archivo"]:not(.processed)').multiUpload({
+																mw_placeholder:"{{=T('Ingrese una descripción')}}",
+																mw_text_addBtn:"+",
+																mw_tooltip_addBtn:"{{=T('Agregar un archivo')}}",
+																mw_text_clearBtn:"x",
+																mw_tooltip_clearBtn:"{{=T('Remover todos')}}",
+																mw_tooltip_removeFileBtn:"{{=T('Remover este archivo')}}",
+																mw_tooltip_removeGroupBtn:"{{=T('Remover este grupo de archivos')}}",
+																mw_group_title:"{{=T('Grupo de Archivos')}}",
+																mw_fileNumber:false,
+																mw_maxElementAllowed:5
+																});
+//-->
+</script>
+<script type="text/javascript">
+    $(".disabled").click(function(event) {
+        event.preventDefault();
+    });
+</script>
+</div>

@@ -1,0 +1,22 @@
+{{extend 'layout.html'}}
+
+    <!-- Tab Headers-->
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active"><a href="#eventos" data-toggle="tab">Historial de Eventos de Guardias</a></li>
+      <li><a href="#eliminar" data-toggle="tab">Eliminar Guardia</a></li>
+    </ul>
+    <!--Tab Contents-->
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="eventos">
+        Hola1
+      </div>
+      <div class="tab-pane fade" id="consultar">
+          Hola2
+      </div>
+<script>
+  $('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+    })
+
+</script>

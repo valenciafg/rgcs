@@ -1,0 +1,231 @@
+#!/usr/bin/env python
+# coding: utf8
+from gluon import *
+from gluon.contrib.pyfpdf import FPDF, HTMLMixin
+import os
+import time
+class MyFPDF(FPDF, HTMLMixin):
+    def header(self): 
+        titulo="Lista de Chequeo de Actividades de Guardias Rotativas"
+        cod="CÓDIGO: FO-SEI-25"
+        vigen="22/08/2013"
+        rev="3"
+        #Logo Seguros Caroní, S.A.
+        logo=os.path.join(current.request.folder,"static","images","sc.png")
+        self.image(logo,10,15,60)
+        self.set_font('Arial','B',12)
+        #Celda donde va el logo
+        self.cell(60,20,"",1)
+        #Titulo del reporte
+        #certificacion="Nombre de Certificación"
+        self.multi_cell(90,10,titulo.decode("utf8").encode("latin1"),1,'C')
+        #self.cell(90,20,titulo.decode("utf8").encode("latin1"),1,0,'C')
+        self.set_font('Arial','',8)
+        #Formato del Reporte
+        self.set_y(10)
+        self.set_x(160)
+        self.cell(40,5,cod.decode("utf8").encode("latin1"),1,2,'C')
+        self.cell(20,5,"VIGENCIA",1,0,'C')
+        self.cell(20,5,"N° REVISIÓN".decode("utf8").encode("latin1"),1,1,'C')
+        self.cell(150,5,"",0)
+        self.cell(20,5,vigen,1,0,'C')
+        self.cell(20,5,rev,1,1,'C')
+        self.cell(150,5,"",0)
+        #Numero de paginas
+        txt = 'PÁGINA %s / %s' % (self.page_no(), self.alias_nb_pages())
+        self.cell(40,5,txt.decode("utf8").encode("latin1"),1,1,'C')
+    def cabecera(self, titulo):
+        #titulo="Lista de Chequeo de Actividades de Guardias Rotativas"
+        cod="CÓDIGO: FO-SEI-25"
+        vigen="22/08/2013"
+        rev="3"
+        #Logo Seguros Caroní, S.A.
+        logo=os.path.join(current.request.folder,"static","images","sc.png")
+        self.image(logo,10,15,60)
+        self.set_font('Arial','B',12)
+        #Celda donde va el logo
+        self.cell(60,20,"",1)
+        #Titulo del reporte
+        #certificacion="Nombre de Certificación"
+        self.multi_cell(90,10,titulo.decode("utf8").encode("latin1"),1,'C')
+        #self.cell(90,20,titulo.decode("utf8").encode("latin1"),1,0,'C')
+        self.set_font('Arial','',8)
+        #Formato del Reporte
+        self.set_y(10)
+        self.set_x(160)
+        self.cell(40,5,cod.decode("utf8").encode("latin1"),1,2,'C')
+        self.cell(20,5,"VIGENCIA",1,0,'C')
+        self.cell(20,5,"N° REVISIÓN".decode("utf8").encode("latin1"),1,1,'C')
+        self.cell(150,5,"",0)
+        self.cell(20,5,vigen,1,0,'C')
+        self.cell(20,5,rev,1,1,'C')
+        self.cell(150,5,"",0)
+        #Numero de paginas
+        txt = 'PÁGINA %s / %s' % (self.page_no(), self.alias_nb_pages())
+        self.cell(40,5,txt.decode("utf8").encode("latin1"),1,1,'C')
+        
+    def cuerpo(self):
+        self.cell(190,256,"",1,1)
+        
+    def footer1(self):
+        self.set_y(-45)
+        self.set_font('Arial','B',11)
+        self.cell(63.3,6,"ELABORADO POR",1,0,'C')
+        self.cell(63.3,6,"REVISADO POR",1,0,'C')
+        self.cell(63.3,6,"APROBADO POR",1,1,'C')
+        self.set_font('Arial','',9)
+        self.cell(28,6,"Nombre y Apellido:","L",0)
+        self.cell(35.3,6,"","R",0)
+        self.cell(28,6,"Nombre y Apellido:","L",0)
+        self.cell(35.3,6,"","R",0)
+        self.cell(28,6,"Nombre y Apellido:","L",0)
+        self.cell(35.3,6,"","R",1)
+        self.cell(13,6,"Fecha:","L",0)
+        self.cell(50.3,6,"08/08/2014","R",0)
+        self.cell(13,6,"Fecha:","L",0)
+        self.cell(50.3,6,"08/08/2014","R",0)
+        self.cell(13,6,"Fecha:","L",0)
+        self.cell(50.3,6,"08/08/2014","R",1)
+        self.cell(13,6,"Firma:","LB",0)
+        self.cell(50.3,6,"08/08/2014","RB",0)
+        self.cell(13,6,"Firma:","LB",0)
+        self.cell(50.3,6,"08/08/2014","RB",0)
+        self.cell(13,6,"Firma:","LB",0)
+        self.cell(50.3,6,"08/08/2014","RB",1)
+    def footer2(self):
+        self.set_y(-45)
+        self.set_font('Arial','B',11)
+        self.cell(95,6,"REVISADO POR",1,0,'C')
+        self.cell(95,6,"APROBADO POR",1,1,'C')
+        self.set_font('Arial','',9)
+
+        self.cell(43,6,"Nombre y Apellido:","L",0)
+        self.cell(52,6,"","R",0)
+        self.cell(43,6,"Nombre y Apellido:","L",0)
+        self.cell(52,6,"","R",1)
+        
+        self.cell(21,6,"Fecha:","L",0)
+        self.cell(74,6,"","R",0)
+        self.cell(21,6,"Fecha:","L",0)
+        self.cell(74,6,"","R",1)
+        
+        self.cell(21,6,"Firma:","LB",0)
+        self.cell(74,6,"","RB",0)
+        self.cell(21,6,"Firma:","LB",0)
+        self.cell(74,6,"","RB",1)
+    
+def checklist(turno):
+    titulo="Lista de Chequeo de Actividades de Guardias Rotativas"
+    cod="CÓDIGO: FO-SEI-25"
+    vigen="22/08/2013"
+    rev="3"
+    fecha1=time.strftime("%d/%m/%Y")
+    fecha2=time.strftime("%Y-%m-%d")
+    import funciones
+    nturno=funciones.nombre_turno(turno)
+    pdf=MyFPDF()
+    #pdf.cabecera(titulo,cod,rev,vigen)
+    pdf.add_page()
+    pdf.set_fill_color(204,204,204)
+    pdf.cell(20,5,"Turno:",1,0,"C")
+    pdf.cell(25,5,nturno.decode("utf8").encode("latin1"),1,0,"C")
+    pdf.cell(5,5,"",1,0,"C",True)
+    pdf.cell(80,5,"Feriado, Sábado, Domingo".decode("utf8").encode("latin1"),1,0,"L")
+    pdf.cell(35,5,"Fecha de creación:".decode("utf8").encode("latin1"),1,0,"C")
+    pdf.cell(25,5,fecha1,1,1,"C")
+    
+    pdf.cell(155,5,"Actividad",1,0,"C",True)
+    pdf.cell(35,5,"Horario de Revisión".decode("utf8").encode("latin1"),1,1,"C",True)
+    query=(current.db.checklist.id_turnos==turno)&(current.db.actividades.id==current.db.checklist.id_actividades)
+    #query=(current.db.checklist.id==30)
+    filas=current.db(query).select(current.db.checklist.horario,current.db.actividades.desc_act)
+    horario=None
+    y=40
+    for fila in filas:
+        horario=fila.checklist.horario
+        actividad=fila.actividades.desc_act
+        pdf.set_x(10)
+        if len(actividad)>120:
+            alto=5
+        else:
+            alto=10
+        #actividad=actividad+" ==="+str(len(actividad))
+        pdf.multi_cell(155,alto,actividad.decode("utf8").encode("latin1"),1,'L')
+        pdf.set_y(y)
+        y=y+10
+        pdf.set_x(165)
+        pdf.cell(35,10,horario,1,1,'C')
+    detalles=""" <table border="0" align="center" width="50%">
+<thead><tr><th width="30%">Header 1</th><th width="70%">header 2</th></tr></thead>
+<tbody>
+<tr><td>cell 1</td><td>cell 2</td></tr>
+<tr><td>cell 2</td><td>cell 3</td></tr>
+</tbody>
+</table>
+"""
+    pdf.footer2()
+    #pdf.write_html(str(XML(detalles, sanitize=False)))
+    current.response.headers['Content-Type']='application/pdf'
+    ruta=os.path.join(current.request.folder,"uploads","reportes","checklist")
+    nombre="/"+fecha2+"-checklist.pdf"
+    pdf.output(ruta+nombre,dest="F")
+    return pdf.output(dest='S')
+
+def reporte_guardia(id_guardia):
+    fecha1=time.strftime("%d/%m/%Y")
+    fecha2=time.strftime("%Y-%m-%d")
+    import funciones
+    #nturno=funciones.nombre_turno(turno)
+    pdf=MyFPDF()
+    titulo="Reporte de guardia"
+    #pdf.cabecera(titulo)
+    pdf.add_page()
+    pdf.set_fill_color(204,204,204)
+    query=(current.db.guardias.id==id_guardia)
+    filas=current.db(query).select()
+    for fila in filas:
+        pass
+    pdf.cell(25,5,"Elaborado por:",1,0,"C")
+    pdf.cell(40,5,funciones.nombre_completo(fila.id_usuario),1,0,"C",True)
+    pdf.cell(30,5,"Fecha de creación:".decode("utf8").encode("latin1"),1,0,"C")
+    pdf.cell(20,5,str(fila.fecha),1,0,"C",True)
+    pdf.cell(10,5,"Turno:",1,0,"C")
+    pdf.cell(20,5,funciones.nombre_turno(fila.turno).decode("utf8").encode("latin1"),1,0,"C",True)
+    pdf.cell(15,5,"Estatus",1,0,"C")
+    pdf.cell(30,5,fila.estatus.decode("utf8").encode("latin1"),1,1,"C",True)
+    pdf.cell(155,5,"Actividad",1,0,"C",True)
+    pdf.cell(35,5,"Estatus".decode("utf8").encode("latin1"),1,1,"C",True)
+    query = (current.db.certificaciones.id_guardia==id_guardia)&(current.db.checklist.id==current.db.certificaciones.id_checklist)&(current.db.actividades.id==current.db.checklist.id_actividades)
+    filas=current.db(query).select(current.db.actividades.desc_act,current.db.certificaciones.estatus)
+    y=40
+    for dato in filas:
+        actividad=dato.actividades.desc_act
+        pdf.set_x(10)
+        if len(actividad)>120:
+            alto=5
+        else:
+            alto=10
+        pdf.multi_cell(155,alto,actividad.decode("utf8").encode("latin1"),1,0,'L')
+        pdf.set_y(y)
+        y=y+10
+        pdf.set_x(165)
+        pdf.cell(35,10,dato.certificaciones.estatus,1,1,'C',True)
+    #Crea una linea desde la altura actual hasta el final de pagina (275)
+    psy=275-pdf.get_y()
+    pdf.cell(190,psy,"",1)
+    pdf.add_page()
+    pdf.cell(190,10,"Estatus del Centreon",1,1,'C',True)
+    pdf.cell(190,2,"",0,1)
+    img_centreon=os.path.join(current.request.folder,"uploads","centreon",fila.estatus_centreon)
+    pdf.image(img_centreon,None,None,190,100)
+    psy=272-pdf.get_y()
+    pdf.cell(190,psy,"",1)
+    #img_centreon=IMG(_src=URL('default','download',args=fila.estatus_centreon))
+    #pdf.write_html(str(XML(img_centreon, sanitize=False)))
+    pdf.footer1()
+    #pdf.write_html(str(XML(detalles, sanitize=False)))
+    current.response.headers['Content-Type']='application/pdf'
+    ruta=os.path.join(current.request.folder,"uploads","reportes","guardias")
+    nombre="/"+fecha2+"-"+str(id_guardia)+"-guardia.pdf"
+    pdf.output(ruta+nombre,dest="F")
+    return pdf.output(dest='S')

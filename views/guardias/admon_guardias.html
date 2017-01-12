@@ -1,0 +1,26 @@
+{{extend 'layout.html'}}
+<h3>Administración de guardias</h3>
+    <!-- Tab Headers-->
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active"><a href="#eventos" data-toggle="tab">Historial de Eventos de Guardias</a></li>
+      <li><a href="#eliminar" data-toggle="tab">Eliminar Guardia</a></li>
+    </ul>
+    <!--Tab Contents-->
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="eventos">
+          El historial de ventos de guardias se encuentra:
+         {{=estado}}
+          ¿Desea cambiar el estado de esta función?
+          {{=fcestado}}
+        
+      </div>
+      <div class="tab-pane fade" id="eliminar">
+          {{=feliminar}}
+      </div>
+<script>
+  $('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+    })
+
+</script>
